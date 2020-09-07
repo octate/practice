@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	input := []string{"1873", "-9824", "29732"}
+	input := []string{"5769769869996", "8768", smallestInt}
 	output := compareBigInts(input)
 	fmt.Println(output)
 }

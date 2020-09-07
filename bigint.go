@@ -13,6 +13,7 @@ func compareBigInts(ar []string) interface{} {
 	l, sl := "", ""
 	l = smallestInt
 	sl = smallestInt
+	flag := false
 	for _, num := range ar {
 		n0 := new(big.Int)
 		n0, ok := n0.SetString(num, 10)
@@ -42,14 +43,17 @@ func compareBigInts(ar []string) interface{} {
 			continue
 		}
 
-		cmp = n0.Cmp(n2)
+		cmp1 := n0.Cmp(n2)
 
-		if cmp == 1 {
+		//if current number is greater than or equal to second smallest number
+		//and not equal to the largest number then assign it to second sl
+		if (cmp1 == 1 || cmp1 == 0) && cmp != 0 {
 			sl = num
+			flag = true
 			continue
 		}
 	}
-	if sl == smallestInt || l == sl {
+	if (sl == smallestInt && !flag) || l == sl {
 		return -1
 	}
 	return sl
